@@ -69,6 +69,11 @@ h2{
     cursor: pointer;
 }
 
+.btn:hover{
+    background-color: var(--very-dark);
+    transition: 0.3s ease-out;
+}
+
 .info-box{
     background-color: white;
     display: flex;
