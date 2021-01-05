@@ -1,0 +1,386 @@
+:root{
+    --very-dark: hsl(0, 0%, 17%);
+    --dark-grey: hsl(0, 0%, 59%);
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 260px 1fr;
+    height: 100vh;
+    position: relative;
+}
+
+.img{
+    grid-row: 1;
+    background-image: url("./images/pattern-bg.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.middle-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+h2{
+    position: relative;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.search-bar{
+    width: 85vw;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar input{
+    padding: 15px;
+    font-size: 18px;
+    width: 80%;
+    border: none;
+    border-radius: 15px 0 0 15px;
+}
+
+.search-bar input::placeholder{
+    font-size: 13px;
+}
+
+.btn{
+    width: 20%;
+    border: none;
+    background-color: black;
+    border-radius: 0 15px 15px 0px;
+    cursor: pointer;
+}
+
+.info-box{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+.info-box h3{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+}
+
+.info-box h5{
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--dark-grey);
+    font-weight: 700;
+    font-size: 11px;
+    text-align: center;
+}
+
+.map{
+    grid-row: 2;
+    z-index: 1;
+    background-color: black;
+}
+
+.loading-icon{
+    position: absolute;
+    visibility: hidden;
+}
+
+.popup{
+    position: absolute;
+    top: 27%;
+    left: 40%;
+    transform: translateX(-50%);
+    z-index: 3;
+    text-align: center;
+    background-color: #ef476f;
+    color: white;
+    padding: 10px;
+    width: 170px;
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+.popup::after{
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: 20%;
+    transform: rotate(180deg);
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #ef476f transparent transparent transparent;
+}
+
+.isp{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+@keyframes fadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes fadeOut{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+@media screen and (min-width: 720px){
+
+    .middle-container{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        justify-content: space-around;
+        width: 80vw;
+    }
+
+    h2{
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    .search-bar{
+        width: 60vw;
+        display: flex;
+        align-self: center;
+        font-weight: 400;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .search-bar input{
+        padding: 15px;
+        font-size: 18px;
+        width: 87%;
+        border: none;
+        border-radius: 15px 0 0 15px;
+    }
+    
+    .search-bar input::placeholder{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .btn{
+        width: 13%;
+        border: none;
+        background-color: black;
+        border-radius: 0 15px 15px 0px;
+        cursor: pointer;
+    }
+
+    .info-box{
+        background-color: white;
+        display: grid;
+        grid-template-rows: 0.2fr 0.2fr;
+        grid-template-columns: 1fr 15px 1fr 15px 1fr 15px 1fr;
+        width: 75vw;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 15px;
+        z-index: 2;
+    }
+
+    .info-box span{
+        background-color: lightgrey;
+        width: 1px;
+        height: 50%;
+        justify-self: center;
+        margin-top: 8px;
+        grid-row: 1/3;
+    }
+
+    .info-box h3{
+        text-align: left;
+    }
+
+    .info-box h5{
+        text-align: left;
+        margin-bottom: 7px;
+    }
+
+    .info-box h5:nth-child(2){
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .info-box h5:nth-child(5){
+        grid-row: 1;
+        grid-column: 3;
+    }
+
+    .info-box h5:nth-child(8){
+        grid-row: 1;
+        grid-column: 5;
+    }
+
+    .info-box h5:nth-child(11){
+        grid-row: 1;
+        grid-column: 7;
+    }
+
+    .info-box h3:nth-child(3){
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .info-box h3:nth-child(6){
+        grid-row: 2;
+        grid-column: 3;
+    }
+
+    .info-box h3:nth-child(9){
+        grid-row: 2;
+        grid-column: 5;
+    }
+
+    .info-box h3:nth-child(12){
+        grid-row: 2;
+        grid-column: 7;
+    }
+
+    .popup{
+        top: 40%;
+        left: 30%;
+        transform: translateX(-50%);
+    }
+
+    .loading-icon{
+        top: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (min-width: 1024px){
+
+    .info-box{
+        grid-template-columns: 1fr 35px 1fr 35px 1fr 35px 1fr;
+    }
+
+    .search-bar{
+        width: 45vw;
+    }
+    
+    .search-bar input{
+        width: 89%;
+    }
+    
+    .btn{
+        width: 11%;
+    }
+
+    h2{
+        font-size: 35px;
+    }
+
+    .popup{
+        top: 41%;
+        left: 35%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (min-width: 1200px){
+
+    .info-box{
+        grid-template-columns: 1fr 50px 1fr 50px 1fr 50px 1fr;
+    }
+
+    .search-bar{
+        width: 40vw;
+    }
+    
+    .search-bar input{
+        width: 89%;
+    }
+    
+    .btn{
+        width: 11%;
+    }
+
+    .popup{
+        top: 43%;
+        left: 40%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (min-width: 1440px){
+
+    .info-box{
+        grid-template-columns: 1fr 70px 1fr 70px 1fr 70px 1fr;
+    }
+
+    .search-bar{
+        width: 40vw;
+    }
+    
+    .search-bar input{
+        width: 90%;
+    }
+    
+    .btn{
+        width: 10%;
+    }
+
+    .popup{
+        top: 43%;
+        left: 40%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (min-width: 1600px){
+
+    .search-bar input{
+        width: 91%;
+    }
+    
+    .btn{
+        width: 9%;
+    }
+}
+
+@media screen and (min-width: 1920px){
+
+    .search-bar input{
+        width: 93%;
+    }
+    
+    .btn{
+        width: 7%;
+    }
+}
